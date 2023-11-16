@@ -1,8 +1,8 @@
 from flask import request, Flask, render_template, send_file, make_response, redirect, session, url_for
 import os
 import wordgen
-app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app = Flask(__name__, static_folder='frontend/build', static_url_path="/")
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  
 def download(fpath):
     fpath = os.path.join(app.root_path, fpath)
     return send_file(fpath, as_attachment=True, download_name="Sluzhebka.docx", mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document", max_age=600)
@@ -41,7 +41,7 @@ def club6_get():
     
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 @app.post('/') 
 def home_post():
