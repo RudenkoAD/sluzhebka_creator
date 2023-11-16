@@ -11,7 +11,8 @@ def download(fpath):
 def club6_post():
   try:
     res = download(wordgen.gen_sluzhebka(request.form['group'], request.form['genitive_name'], request.form['event_name'], request.form['date'], request.form['start_time'], request.form['end_time'], request.form['num_people'], request.form['name']))
-  except:
+  except Exception as e:
+    print(e)
     res = redirect(url_for("club6_get"))
   res.set_cookie('group', request.form['group'])
   res.set_cookie('genitive_name', request.form['genitive_name'])
