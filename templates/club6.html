@@ -1,0 +1,33 @@
+<div style="border: 1px solid rgb(16, 2, 2); padding: 10px; fill:rgba(13, 254, 238, 0.988)">
+  <form method="post">
+    <label for="group">Группа:</label>
+    <input type="text" id="group" name="group" value={{group}}><br>
+
+    <label for="genitive_name">ФИО проводящего в родительном падеже:</label>
+    <input type="text" id="genitive_name" name="genitive_name" value={{genitive_name}}><br>
+
+    <label for="name">ФИО проводящего:</label>
+    <input type="text" id="name" name="name" value={{name}}><br>
+
+    <label for="date">Дата:</label>
+    <input type="date" id="date" name="date"><br>
+
+    <label for="start_time">Время начала:</label>
+    <input type="time" id="start_time" name="start_time" value={{start_time}}><br>
+
+    <label for="end_time">Время окончания:</label>
+    <input type="time" id="end_time" name="end_time" value={{end_time}}><br>
+
+    <label for="num_people">Количество людей:</label>
+    <input type="number" id="num_people" name="num_people" value={{num_people}}><br>
+
+    <label for="event_name">Название мероприятия:</label>
+    <input type="text" id="event_name" name="event_name" value={{event_name}}><br>
+
+    <input type="submit" value="Скачать Служебку">
+  </form>
+</div>
+
+{% if error %}
+<p style="color: red;">Ошибка при генерации файла, проверьте что все поля заполнены корректно</p>
+{% endif %}
