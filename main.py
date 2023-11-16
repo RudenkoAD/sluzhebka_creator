@@ -44,10 +44,9 @@ def home():
 
 @app.post('/') 
 def home_post():
-    match request.form["location"]:
-      case "club":
+    if request.form["location"] == "club6":
         return redirect(url_for("club6"))
-      case "conference":
+    elif request.form["location"] == "conference":
         return redirect('/conference')
-      case _:
+    else:
         return redirect('/')
