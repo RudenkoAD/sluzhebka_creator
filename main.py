@@ -8,7 +8,7 @@ def download(fpath):
     return send_file(fpath, as_attachment=True, download_name="Sluzhebka.docx", mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document", max_age=600)
 
 @app.post('/club6')
-def club6():
+def club6_post():
   try:
     res = download(wordgen.gen_sluzhebka(request.form['group'], request.form['genitive_name'], request.form['event_name'], request.form['date'], request.form['start_time'], request.form['end_time'], request.form['num_people'], request.form['name']))
   except:
@@ -26,7 +26,7 @@ def club6():
   
 
 @app.route('/club6')
-def form():
+def club6_get():
     return render_template('club6.html', 
                            error = session.pop('error', False),
                            group=request.cookies.get('group'), 
@@ -45,7 +45,7 @@ def home():
 @app.post('/') 
 def home_post():
     if request.form["location"] == "club6":
-        return redirect(url_for("club6"))
+        return redirect("/club6")
     elif request.form["location"] == "conference":
         return redirect('/conference')
     else:
